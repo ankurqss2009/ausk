@@ -18,22 +18,12 @@ exports.up = function(knex, Promise) {
         table.string('content');
         table.timestamps(false, true);
       })
-    .createTable('post_image_map', table => {
-        table.increments();
-        table
-            .integer('post_id')
-            .unsigned()
-            .references('id')
-            .inTable('post')
-            .onDelete('CASCADE');
-        table
-            .integer('upload_id')
-            .unsigned()
-            .references('id')
-            .inTable('upload')
-            .onDelete('CASCADE');
-        table.timestamps(false, true);
-    })
+        .createTable('post_picture_map', table => {
+            table.increments();
+            table.integer('post_id');
+            table.integer('picture_id');
+            table.timestamps(false, true);
+       })
   ]);
 };
 
